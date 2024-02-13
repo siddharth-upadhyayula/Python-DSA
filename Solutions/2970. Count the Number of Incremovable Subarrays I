@@ -1,0 +1,16 @@
+class Solution:
+    def incremovableSubarrayCount(self, nums: List[int]) -> int:
+         #find all possible subarrays
+         #try removing elements and see if it is increasing
+         #increment count and return it
+
+        count = 0
+
+        for i in range(len(nums)):
+            for j in range(i+1, len(nums)+1):
+                #this gives us subarrays with non-repeating numbers
+                sub = nums[:i] + nums[j:]
+                #check if sub array is sorted to see if it is strictly increasing and if the subarray contains unique elements
+                if sub==sorted(sub) and len(sub)==len(set(sub)):
+                    count+=1
+        return count
